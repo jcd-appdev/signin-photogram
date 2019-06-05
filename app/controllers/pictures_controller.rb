@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  skip_before_action(:authenticate_user!, { :only => :recent })
+  
   def recent
     @photos = Photo.all.order({ :created_at => :desc }).limit(25)
 

@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def save_new_row
     comment = Comment.new
     comment.photo_id = params.fetch("picture_id")
-    comment.author_id = params.fetch("commenter_id")
+    comment.author_id = current_user.id
     comment.body = params.fetch("comment_text")
 
     comment.save
